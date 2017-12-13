@@ -1,5 +1,5 @@
 # Proyecto recolección y análisis de vigilancia de virus respiratorios
-Proyecto en desarrollo de recoleción de datos e interpretación interactiva mediante PostgreSQL, PHP y R.
+Proyecto en desarrollo de recoleción de datos e interpretación interactiva mediante PostgreSQL, python y R.
 
 ## Recolección de datos
 En desarrollo, 0 avance
