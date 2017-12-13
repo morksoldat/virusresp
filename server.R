@@ -1,19 +1,16 @@
-library(ggplot2)
-library(shiny)
-setwd("~/MEGAsync/Infecto/Proyecto Investigación/VirusRepsApp/Prueba 1/")
+
 shinyServer(
 function(input, output, session){
   
-  output$grafico <- renderPlot({
-    distType <- input$Distribución
-    size <- input$sampleSize
-    
-    if(distType =="Normal"){
-      randomVec <- data.frame(value=rnorm(size, mean= as.numeric(input$mean), sd=as.numeric(input$sd)))
-    }
-    else {
-      randomVec <- data.frame(value=rexp(size, rate = 1/as.numeric(input$lamnda)))
-    }
-    ggplot(randomVec, aes(x=value)) + geom_histogram(binwidth = 0.2, aes(fill = ..count..) )
-  }) 
+  output$g_trad <- renderPlot(
+      ggplot(lab_trad, aes_string(input$agrupar, fill="VIRUS"))+
+        geom_bar(stat="count", colour="black", position=position_dodge())+
+        scale_fill_manual(values=c("#000000","#ff0000","#339966","#ffffff","#00ccff","#ffcc00"))+
+        labs(y = "N° de virus identificados")
+    )
+  output$g_notrad <- renderPlot(
+    ggplot(lab_notrad, aes_string(input$agrupar2, fill="VIRUS"))+
+      geom_bar(stat="count", colour="black", position=position_dodge())+
+      labs(y = "N° de virus identificados")
+  ) 
 })
